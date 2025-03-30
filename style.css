@@ -1,0 +1,23 @@
+
+
+
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 0, 0, 0.2); /* Light red with transparency */
+    border: 1px solid rgba(255, 0, 0, 0.5); /* Soft border */
+    border-radius: 50%;
+    pointer-events: none; /* Prevent interaction */
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s linear;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    z-index: 9999; /* Ensure it's above all elements */
+}
+
+
+button:hover ~ .custom-cursor,
+a:hover ~ .custom-cursor {
+    transform: scale(1.5);
+    background: rgba(0, 255, 0, 0.5);
+}
