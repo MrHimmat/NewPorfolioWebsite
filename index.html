@@ -77,38 +77,37 @@
         background: #ec4899;
       }
 
-      /* Custom Cursor */
-      .cursor-dot,
-      .cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
+      /* Custom Cursor (Hidden on Mobile) */
+      @media (min-width: 768px) {
+        .cursor-dot,
+        .cursor-outline {
+          position: fixed;
+          top: 0;
+          left: 0;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          z-index: 9999;
+          pointer-events: none;
+        }
+        .cursor-dot {
+          width: 8px;
+          height: 8px;
+          background-color: #6366f1;
+        }
+        .cursor-outline {
+          width: 40px;
+          height: 40px;
+          border: 2px solid hsla(239, 84%, 67%, 0.5);
+          transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+          width: 60px;
+          height: 60px;
+          background-color: rgba(99, 102, 241, 0.1);
+          border-color: #ec4899;
+        }
       }
-      .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #6366f1;
-      }
-      .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 2px solid hsla(239, 84%, 67%, 0.5);
-        transition: width 0.2s, height 0.2s, background-color 0.2s;
-      }
-      /* Hover state for cursor */
-      body.hovering .cursor-outline {
-        width: 60px;
-        height: 60px;
-        background-color: rgba(99, 102, 241, 0.1);
-        border-color: #ec4899;
-      }
-
-      /* Mobile adjustment */
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         .cursor-dot,
         .cursor-outline {
           display: none;
@@ -125,12 +124,21 @@
           opacity: 0;
         }
       }
+
+      /* Navigation Active State */
+      .nav-link.active {
+        color: #6366f1; /* Primary Color */
+        font-weight: 600;
+      }
+      .dark .nav-link.active {
+        color: #6366f1;
+      }
     </style>
   </head>
   <body
-    class="bg-slate-50 text-slate-700 dark:bg-dark dark:text-slate-300 transition-colors duration-300 antialiased font-sans selection:bg-pink-500 selection:text-white"
+    class="bg-slate-50 text-slate-700 dark:bg-dark dark:text-slate-300 transition-colors duration-300 antialiased font-sans selection:bg-pink-500 selection:text-white overflow-x-hidden"
   >
-    <!-- Custom Cursor Elements -->
+    <!-- Custom Cursor -->
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
 
@@ -143,7 +151,7 @@
 
     <!-- Navigation -->
     <nav
-      class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
+      class="fixed w-full z-50 transition-all duration-300 bg-white/90 dark:bg-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
       id="navbar"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -151,7 +159,7 @@
           <!-- Logo -->
           <div class="flex-shrink-0" data-aos="fade-right">
             <a
-              href="#"
+              href="#home"
               class="text-2xl font-bold text-slate-900 dark:text-white tracking-wide hover-target"
             >
               Lakshmi<span class="text-primary">.</span>
@@ -160,30 +168,30 @@
 
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
-            <div class="flex space-x-6">
+            <div class="flex space-x-6" id="desktop-menu">
               <a
                 href="#home"
-                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                class="nav-link hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
                 >Home</a
               >
               <a
                 href="#about"
-                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                class="nav-link hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
                 >About</a
               >
               <a
                 href="#services"
-                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                class="nav-link hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
                 >Services</a
               >
               <a
                 href="#experience"
-                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                class="nav-link hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
                 >Experience</a
               >
               <a
                 href="#contact"
-                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                class="nav-link hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
                 >Contact</a
               >
             </div>
@@ -200,7 +208,7 @@
             <!-- CTA -->
             <a
               href="#contact"
-              class="hover-target px-5 py-2 rounded-full bg-primary hover:bg-indigo-700 text-white font-medium text-sm transition shadow-lg shadow-primary/30"
+              class="hover-target px-5 py-2 rounded-full bg-primary hover:bg-indigo-700 text-white font-medium text-sm transition shadow-lg shadow-primary/30 transform hover:scale-105"
             >
               Hire Me
             </a>
@@ -229,34 +237,32 @@
       <!-- Mobile Menu Panel -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden bg-white dark:bg-darkCard border-t dark:border-slate-700 shadow-lg"
+        class="hidden md:hidden bg-white dark:bg-darkCard border-t dark:border-slate-700 shadow-lg absolute w-full left-0 top-20"
       >
-        <div
-          class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center"
-        >
+        <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
           <a
             href="#home"
-            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            class="nav-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-primary"
             >Home</a
           >
           <a
             href="#about"
-            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            class="nav-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-primary"
             >About</a
           >
           <a
             href="#services"
-            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            class="nav-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-primary"
             >Services</a
           >
           <a
             href="#experience"
-            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            class="nav-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-primary"
             >Experience</a
           >
           <a
             href="#contact"
-            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            class="nav-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-primary"
             >Contact</a
           >
         </div>
@@ -266,24 +272,24 @@
     <!-- Hero Section -->
     <section
       id="home"
-      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
       <!-- Animated Background Blobs -->
       <div
-        class="absolute top-0 -left-4 w-96 h-96 bg-purple-300 dark:bg-purple-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob"
+        class="absolute top-0 -left-4 w-72 md:w-96 h-72 md:h-96 bg-purple-300 dark:bg-purple-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob"
       ></div>
       <div
-        class="absolute top-0 -right-4 w-96 h-96 bg-yellow-300 dark:bg-yellow-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-2000"
+        class="absolute top-0 -right-4 w-72 md:w-96 h-72 md:h-96 bg-yellow-300 dark:bg-yellow-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-2000"
       ></div>
       <div
-        class="absolute -bottom-8 left-20 w-96 h-96 bg-pink-300 dark:bg-pink-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-4000"
+        class="absolute -bottom-8 left-20 w-72 md:w-96 h-72 md:h-96 bg-pink-300 dark:bg-pink-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-4000"
       ></div>
 
       <div
-        class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10"
+        class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 w-full"
       >
         <h2
-          class="text-xl md:text-2xl font-medium text-slate-500 dark:text-slate-400 mb-4"
+          class="text-lg md:text-2xl font-medium text-slate-500 dark:text-slate-400 mb-2 md:mb-4"
           data-aos="fade-down"
           data-aos-delay="100"
         >
@@ -291,7 +297,7 @@
         </h2>
 
         <h1
-          class="text-5xl md:text-8xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight"
+          class="text-4xl sm:text-6xl md:text-8xl font-extrabold text-slate-900 dark:text-white mb-4 md:mb-6 tracking-tight"
           data-aos="zoom-in"
           data-aos-duration="1000"
         >
@@ -303,22 +309,26 @@
         </h1>
 
         <!-- Typewriter Effect -->
-        <div class="h-10 mb-12" data-aos="fade-up" data-aos-delay="300">
+        <div
+          class="h-8 md:h-12 mb-8 md:mb-12"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <span
-            class="text-2xl md:text-4xl text-slate-600 dark:text-slate-300 font-light typing-cursor"
+            class="text-xl md:text-4xl text-slate-600 dark:text-slate-300 font-light typing-cursor"
             id="typewriter-text"
           ></span>
         </div>
 
         <div
-          class="flex flex-col sm:flex-row justify-center gap-4"
+          class="flex flex-col sm:flex-row justify-center gap-4 px-4"
           data-aos="fade-up"
           data-aos-delay="500"
         >
           <a
             href="./assets/download/MyResume.pdf"
             download
-            class="hover-target relative overflow-hidden group inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-full shadow-lg text-white bg-slate-900 dark:bg-white dark:text-slate-900 hover:scale-105 transition duration-300"
+            class="hover-target relative overflow-hidden group w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 md:py-4 border border-transparent text-base md:text-lg font-medium rounded-full shadow-lg text-white bg-slate-900 dark:bg-white dark:text-slate-900 transition duration-300"
           >
             <span
               class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shine"
@@ -328,7 +338,7 @@
           </a>
           <a
             href="#contact"
-            class="hover-target inline-flex items-center px-8 py-4 border-2 border-slate-900 dark:border-white text-lg font-medium rounded-full text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition duration-300"
+            class="hover-target w-full sm:w-auto inline-flex justify-center items-center px-8 py-3 md:py-4 border-2 border-slate-900 dark:border-white text-base md:text-lg font-medium rounded-full text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition duration-300"
           >
             Contact Me
           </a>
@@ -339,18 +349,20 @@
     <!-- About Section -->
     <section
       id="about"
-      class="py-24 bg-white dark:bg-dark transition-colors duration-300"
+      class="py-12 md:py-24 bg-white dark:bg-dark transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
+        <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
           <h2
-            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
+            class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
           >
             About Me
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+        >
           <!-- Text Content -->
           <div
             class="order-2 md:order-1"
@@ -358,11 +370,13 @@
             data-aos-duration="1000"
           >
             <h3
-              class="text-2xl font-bold text-slate-800 dark:text-white mb-4 leading-relaxed"
+              class="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 leading-relaxed"
             >
               Professional HR Admin with expertise in streamlining operations.
             </h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+            <p
+              class="text-sm md:text-base text-slate-600 dark:text-slate-400 mb-6 leading-relaxed"
+            >
               I specialize in employee engagement, recruitment, payroll
               management, and policy implementation. With a strong understanding
               of organizational needs, I handle compliance, employee relations,
@@ -371,38 +385,42 @@
               both employees and business objectives.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-8"
+            >
               <div
-                class="flex items-start p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
+                class="flex items-start p-3 md:p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50"
               >
                 <div class="flex-shrink-0">
                   <i class="fa fa-phone text-primary text-xl mt-1"></i>
                 </div>
                 <div class="ml-4">
                   <h4
-                    class="text-lg font-semibold text-slate-900 dark:text-white"
+                    class="text-base md:text-lg font-semibold text-slate-900 dark:text-white"
                   >
                     Phone
                   </h4>
-                  <p class="text-slate-600 dark:text-slate-400">
+                  <p
+                    class="text-sm md:text-base text-slate-600 dark:text-slate-400"
+                  >
                     +91 7083499483
                   </p>
                 </div>
               </div>
               <div
-                class="flex items-start p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
+                class="flex items-start p-3 md:p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50"
               >
                 <div class="flex-shrink-0">
                   <i class="fa fa-envelope text-secondary text-xl mt-1"></i>
                 </div>
                 <div class="ml-4">
                   <h4
-                    class="text-lg font-semibold text-slate-900 dark:text-white"
+                    class="text-base md:text-lg font-semibold text-slate-900 dark:text-white"
                   >
                     Email
                   </h4>
                   <p
-                    class="text-slate-600 dark:text-slate-400 text-sm break-all"
+                    class="text-sm md:text-base text-slate-600 dark:text-slate-400 break-all"
                   >
                     lakshmighosh043@gmail.com
                   </p>
@@ -411,19 +429,16 @@
             </div>
           </div>
 
-          <!-- Image with 3D Tilt Wrapper -->
+          <!-- Image -->
           <div
             class="order-1 md:order-2 flex justify-center"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
             <div
-              class="relative group"
+              class="relative group w-full max-w-sm"
               data-tilt
               data-tilt-max="5"
-              data-tilt-speed="400"
-              data-tilt-glare
-              data-tilt-max-glare="0.2"
             >
               <div
                 class="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-2xl opacity-70 blur-lg group-hover:opacity-100 transition duration-500"
@@ -432,7 +447,7 @@
               <img
                 src="./assets/images/about/mainImage.jpg"
                 alt="Lakshmi Ghosh"
-                class="relative rounded-xl shadow-2xl w-full max-w-sm object-cover h-[450px]"
+                class="relative rounded-xl shadow-2xl w-full object-cover h-[350px] md:h-[450px]"
               />
             </div>
           </div>
@@ -440,35 +455,37 @@
       </div>
     </section>
 
-    <!-- NEW SECTION: Services / What I Do (Glassmorphism + Tilt) -->
+    <!-- Services Section -->
     <section
       id="services"
-      class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300"
+      class="py-12 md:py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
+        <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
           <h2
-            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-secondary pb-2"
+            class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-secondary pb-2"
           >
             What I Do
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+        >
           <!-- Card 1 -->
           <div
-            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-primary transform transition-all"
-            data-tilt
-            data-tilt-max="10"
+            class="hover-target p-6 md:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-primary transform transition-all hover:-translate-y-2"
             data-aos="fade-up"
             data-aos-delay="0"
           >
             <div
-              class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl mb-6"
+              class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl mb-4 md:mb-6"
             >
               <i class="fas fa-users"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            <h3
+              class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 md:mb-3"
+            >
               Recruitment
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
@@ -479,18 +496,18 @@
 
           <!-- Card 2 -->
           <div
-            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-secondary transform transition-all"
-            data-tilt
-            data-tilt-max="10"
+            class="hover-target p-6 md:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-secondary transform transition-all hover:-translate-y-2"
             data-aos="fade-up"
             data-aos-delay="100"
           >
             <div
-              class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary text-2xl mb-6"
+              class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary text-2xl mb-4 md:mb-6"
             >
               <i class="fas fa-file-invoice-dollar"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            <h3
+              class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 md:mb-3"
+            >
               Payroll & GST
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
@@ -501,18 +518,18 @@
 
           <!-- Card 3 -->
           <div
-            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-blue-500 transform transition-all"
-            data-tilt
-            data-tilt-max="10"
+            class="hover-target p-6 md:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-blue-500 transform transition-all hover:-translate-y-2"
             data-aos="fade-up"
             data-aos-delay="200"
           >
             <div
-              class="w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 text-2xl mb-6"
+              class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 text-2xl mb-4 md:mb-6"
             >
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            <h3
+              class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 md:mb-3"
+            >
               Digital Marketing
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
@@ -523,18 +540,18 @@
 
           <!-- Card 4 -->
           <div
-            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-green-500 transform transition-all"
-            data-tilt
-            data-tilt-max="10"
+            class="hover-target p-6 md:p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-green-500 transform transition-all hover:-translate-y-2"
             data-aos="fade-up"
             data-aos-delay="300"
           >
             <div
-              class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-500 text-2xl mb-6"
+              class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-500 text-2xl mb-4 md:mb-6"
             >
               <i class="fas fa-tasks"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            <h3
+              class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 md:mb-3"
+            >
               Administration
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
@@ -546,9 +563,9 @@
       </div>
     </section>
 
-    <!-- NEW SECTION: Counter Statistics -->
+    <!-- Counter Statistics -->
     <section
-      class="py-16 bg-primary dark:bg-slate-800 text-white relative overflow-hidden"
+      class="py-12 md:py-16 bg-primary dark:bg-slate-800 text-white relative overflow-hidden"
     >
       <div
         class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
@@ -556,37 +573,34 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div data-aos="zoom-in">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
               <span class="counter" data-target="3">0</span>+
             </h2>
-            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+            <p class="text-xs md:text-base opacity-80 uppercase tracking-wide">
               Years Experience
             </p>
           </div>
-
           <div data-aos="zoom-in" data-aos-delay="100">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
               <span class="counter" data-target="15">0</span>+
             </h2>
-            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+            <p class="text-xs md:text-base opacity-80 uppercase tracking-wide">
               Projects Done
             </p>
           </div>
-
           <div data-aos="zoom-in" data-aos-delay="200">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
               <span class="counter" data-target="4">0</span>
             </h2>
-            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+            <p class="text-xs md:text-base opacity-80 uppercase tracking-wide">
               Companies Served
             </p>
           </div>
-
           <div data-aos="zoom-in" data-aos-delay="300">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
               <span class="counter" data-target="100">0</span>%
             </h2>
-            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+            <p class="text-xs md:text-base opacity-80 uppercase tracking-wide">
               Satisfaction
             </p>
           </div>
@@ -597,38 +611,40 @@
     <!-- Experience Section -->
     <section
       id="experience"
-      class="py-24 bg-white dark:bg-dark transition-colors duration-300"
+      class="py-12 md:py-24 bg-white dark:bg-dark transition-colors duration-300"
     >
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
+        <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
           <h2
-            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
+            class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
           >
             Experience
           </h2>
         </div>
 
         <div
-          class="relative border-l-2 border-primary/30 dark:border-slate-700 ml-3 md:ml-6 space-y-12"
+          class="relative border-l-2 border-primary/30 dark:border-slate-700 ml-3 md:ml-6 space-y-8 md:space-y-12"
         >
           <!-- Timeline Item 1 -->
-          <div class="relative pl-8 md:pl-12 group" data-aos="fade-left">
+          <div class="relative pl-6 md:pl-12 group" data-aos="fade-left">
             <span
               class="absolute -left-[9px] top-0 h-5 w-5 rounded-full bg-white dark:bg-dark border-4 border-primary group-hover:scale-125 transition duration-300 shadow-md"
             ></span>
             <div
               class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2"
             >
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+              <h3
+                class="text-lg md:text-xl font-bold text-slate-900 dark:text-white"
+              >
                 HR Admin
               </h3>
               <span
-                class="text-sm font-semibold text-primary bg-primary/10 dark:bg-primary/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
+                class="text-xs md:text-sm font-semibold text-primary bg-primary/10 dark:bg-primary/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
                 >02/2025 - Present</span
               >
             </div>
             <h4
-              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
+              class="text-base md:text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
             >
               Curiosity Automation OPC Private Limited
             </h4>
@@ -637,7 +653,7 @@
               Baramati
             </p>
             <p
-              class="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
+              class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-4 md:p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
             >
               Currently managing various HR functions including recruitment,
               employee records, payroll processing, and compliance with company
@@ -647,7 +663,7 @@
 
           <!-- Timeline Item 2 -->
           <div
-            class="relative pl-8 md:pl-12 group"
+            class="relative pl-6 md:pl-12 group"
             data-aos="fade-left"
             data-aos-delay="100"
           >
@@ -657,21 +673,23 @@
             <div
               class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2"
             >
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+              <h3
+                class="text-lg md:text-xl font-bold text-slate-900 dark:text-white"
+              >
                 HR Admin
               </h3>
               <span
-                class="text-sm font-semibold text-secondary bg-secondary/10 dark:bg-secondary/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
+                class="text-xs md:text-sm font-semibold text-secondary bg-secondary/10 dark:bg-secondary/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
                 >11/2023 - 11/2024</span
               >
             </div>
             <h4
-              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
+              class="text-base md:text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
             >
               GSINFOTECHVIS Private Limited
             </h4>
             <p
-              class="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
+              class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-4 md:p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
             >
               Handled key HR responsibilities such as recruitment, employee
               management, payroll processing, and compliance.
@@ -680,7 +698,7 @@
 
           <!-- Timeline Item 3 -->
           <div
-            class="relative pl-8 md:pl-12 group"
+            class="relative pl-6 md:pl-12 group"
             data-aos="fade-left"
             data-aos-delay="200"
           >
@@ -690,21 +708,23 @@
             <div
               class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2"
             >
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+              <h3
+                class="text-lg md:text-xl font-bold text-slate-900 dark:text-white"
+              >
                 HR & Digital Marketing
               </h3>
               <span
-                class="text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
+                class="text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
                 >03/2023 - 08/2023</span
               >
             </div>
             <h4
-              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
+              class="text-base md:text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
             >
               KAD Deshmukh Business Group
             </h4>
             <p
-              class="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
+              class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-4 md:p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
             >
               Managed HR functions like recruitment and payroll. Also handled
               digital marketing activities including social media management and
@@ -718,25 +738,27 @@
     <!-- Contact Section -->
     <section
       id="contact"
-      class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300"
+      class="py-12 md:py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
+        <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
           <h2
-            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
+            class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
           >
             Contact Me
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <!-- Form -->
           <div
-            class="hover-target bg-white dark:bg-darkCard p-8 rounded-2xl shadow-lg border-t-4 border-primary"
+            class="hover-target bg-white dark:bg-darkCard p-6 md:p-8 rounded-2xl shadow-lg border-t-4 border-primary"
             data-aos="fade-right"
           >
             <form>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6"
+              >
                 <div>
                   <label
                     class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
@@ -758,7 +780,7 @@
                   />
                 </div>
               </div>
-              <div class="mb-6">
+              <div class="mb-4 md:mb-6">
                 <label
                   class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                   >Subject</label
@@ -768,7 +790,7 @@
                   class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition"
                 />
               </div>
-              <div class="mb-6">
+              <div class="mb-4 md:mb-6">
                 <label
                   class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                   >Message</label
@@ -789,7 +811,9 @@
 
           <!-- Contact Info -->
           <div class="flex flex-col justify-center" data-aos="fade-left">
-            <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+            <h3
+              class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2"
+            >
               Lakshmi Ghosh
             </h3>
             <p
@@ -800,7 +824,7 @@
 
             <div class="space-y-6">
               <div
-                class="flex items-center p-4 bg-white dark:bg-darkCard rounded-lg border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:scale-105 transition duration-300"
+                class="flex items-center p-4 bg-white dark:bg-darkCard rounded-lg border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition duration-300"
               >
                 <div
                   class="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary text-xl"
@@ -822,7 +846,7 @@
               </div>
 
               <div
-                class="flex items-center p-4 bg-white dark:bg-darkCard rounded-lg border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:scale-105 transition duration-300"
+                class="flex items-center p-4 bg-white dark:bg-darkCard rounded-lg border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition duration-300"
               >
                 <div
                   class="w-12 h-12 rounded-full bg-secondary/10 dark:bg-secondary/20 flex items-center justify-center text-secondary text-xl"
@@ -848,17 +872,17 @@
             <div class="mt-10 flex space-x-4">
               <a
                 href="#"
-                class="hover-target w-12 h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition shadow-md"
+                class="hover-target w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition shadow-md"
                 ><i class="fab fa-linkedin-in text-lg"></i
               ></a>
               <a
                 href="#"
-                class="hover-target w-12 h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition shadow-md"
+                class="hover-target w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition shadow-md"
                 ><i class="fab fa-instagram text-lg"></i
               ></a>
               <a
                 href="#"
-                class="hover-target w-12 h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-400 hover:text-white transition shadow-md"
+                class="hover-target w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-400 hover:text-white transition shadow-md"
                 ><i class="fab fa-twitter text-lg"></i
               ></a>
             </div>
@@ -877,7 +901,7 @@
       <a
         href="#home"
         id="scroll-top"
-        class="hover-target fixed bottom-8 right-8 bg-primary hover:bg-indigo-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition duration-300 transform translate-y-20 opacity-0 cursor-pointer z-40"
+        class="hover-target fixed bottom-8 right-8 bg-primary hover:bg-indigo-700 text-white w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition duration-300 transform translate-y-20 opacity-0 cursor-pointer z-40"
       >
         <i class="fa fa-angle-up text-xl"></i>
       </a>
@@ -896,40 +920,44 @@
         offset: 50,
       });
 
-      // --- 2. Custom Cursor Logic ---
-      const cursorDot = document.querySelector("[data-cursor-dot]");
-      const cursorOutline = document.querySelector("[data-cursor-outline]");
-      const hoverTargets = document.querySelectorAll(
-        ".hover-target, a, button, input, textarea"
-      );
-
-      window.addEventListener("mousemove", (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Adding a tiny delay to the outline for smooth trailing effect
-        cursorOutline.animate(
-          {
-            left: `${posX}px`,
-            top: `${posY}px`,
-          },
-          { duration: 500, fill: "forwards" }
+      // --- 2. Custom Cursor Logic (Only Desktop) ---
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        const cursorDot = document.querySelector("[data-cursor-dot]");
+        const cursorOutline = document.querySelector("[data-cursor-outline]");
+        const hoverTargets = document.querySelectorAll(
+          ".hover-target, a, button, input, textarea"
         );
-      });
 
-      hoverTargets.forEach((el) => {
-        el.addEventListener("mouseenter", () =>
-          document.body.classList.add("hovering")
-        );
-        el.addEventListener("mouseleave", () =>
-          document.body.classList.remove("hovering")
-        );
-      });
+        window.addEventListener("mousemove", (e) => {
+          const posX = e.clientX;
+          const posY = e.clientY;
 
-      // --- 3. Scroll Progress Bar ---
+          cursorDot.style.left = `${posX}px`;
+          cursorDot.style.top = `${posY}px`;
+
+          cursorOutline.animate(
+            {
+              left: `${posX}px`,
+              top: `${posY}px`,
+            },
+            { duration: 500, fill: "forwards" }
+          );
+        });
+
+        hoverTargets.forEach((el) => {
+          el.addEventListener("mouseenter", () =>
+            document.body.classList.add("hovering")
+          );
+          el.addEventListener("mouseleave", () =>
+            document.body.classList.remove("hovering")
+          );
+        });
+      }
+
+      // --- 3. Scroll Progress & Active Navigation (ScrollSpy) ---
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+
       window.addEventListener("scroll", () => {
         const winScroll =
           document.body.scrollTop || document.documentElement.scrollTop;
@@ -944,6 +972,22 @@
         if (winScroll > 300)
           btn.classList.remove("translate-y-20", "opacity-0");
         else btn.classList.add("translate-y-20", "opacity-0");
+
+        // Active Navigation Logic
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((li) => {
+          li.classList.remove("active");
+          if (li.getAttribute("href").includes(current)) {
+            li.classList.add("active");
+          }
+        });
       });
 
       // --- 4. Dark Mode ---
