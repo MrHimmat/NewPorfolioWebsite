@@ -1,846 +1,1055 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lakshmi Ghosh | HR Manager</title>
 
-    <head>
-        <!-- meta data -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-		<link rel="stylesheet" href="style.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-        <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
-        
-        <!-- title of site -->
-        <title>Lakshmi</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
-       
-        <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-		<!--flat icon css-->
-		<link rel="stylesheet" href="assets/css/flaticon.css">
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            colors: {
+              primary: "#6366f1", // Indigo 500
+              secondary: "#ec4899", // Pink 500
+              dark: "#0f172a", // Slate 900
+              darkCard: "#1e293b", // Slate 800
+            },
+            animation: {
+              blob: "blob 7s infinite",
+              shine: "shine 1s",
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+              shine: {
+                "100%": { left: "125%" },
+              },
+            },
+          },
+        },
+      };
+    </script>
 
-		<!--animate.css-->
-        <link rel="stylesheet" href="assets/css/animate.css">
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6366f1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ec4899;
+      }
 
-        <!--owl.carousel.css-->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-		
-        <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
-        
-        <!--style.css-->
-        <link rel="stylesheet" href="assets/css/style.css">
-        
-        <!--responsive.css-->
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        
+      /* Custom Cursor */
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #6366f1;
+      }
+      .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 2px solid hsla(239, 84%, 67%, 0.5);
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+      }
+      /* Hover state for cursor */
+      body.hovering .cursor-outline {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(99, 102, 241, 0.1);
+        border-color: #ec4899;
+      }
 
-    </head>
-	
-	<body>
-	
-		<div class="custom-cursor"></div>
-		<!-- top-area Start -->
-		<header class="top-area">
-			<div class="header-area">
-				<!-- Start Navigation -->
-			    <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+      /* Mobile adjustment */
+      @media (max-width: 768px) {
+        .cursor-dot,
+        .cursor-outline {
+          display: none;
+        }
+      }
 
-			        <div class="container">
+      /* Typewriter Cursor */
+      .typing-cursor::after {
+        content: "|";
+        animation: blink 1s step-start infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-700 dark:bg-dark dark:text-slate-300 transition-colors duration-300 antialiased font-sans selection:bg-pink-500 selection:text-white"
+  >
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
 
-			            <!-- Start Header Navigation -->
-			            <div class="navbar-header">
-			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-			                    <i class="fa fa-bars"></i>
-			                </button>
-			                <a class="navbar-brand" href="index.html">Lakshmi</a>
-			            </div><!--/.navbar-header-->
-			            <!-- End Header Navigation -->
+    <!-- Scroll Progress Bar -->
+    <div
+      class="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-secondary z-[60]"
+      id="scroll-progress"
+      style="width: 0%"
+    ></div>
 
-			            <!-- Collect the nav links, forms, and other content for toggling -->
-			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-			                <li class=" smooth-menu active"></li>
-			                    <li class=" smooth-menu"><a href="#education">education</a></li>
-			                    <li class="smooth-menu"><a href="#skills">skills</a></li>
-			                    <li class="smooth-menu"><a href="#experience">experience</a></li>
-			                    <li class="smooth-menu"><a href="#profiles">profile</a></li>
-			                    <li class="smooth-menu"><a href="#contact">contact</a></li>
-			                </ul><!--/.nav -->
-			            </div><!-- /.navbar-collapse -->
-			        </div><!--/.container-->
-			    </nav><!--/nav-->
-			    <!-- End Navigation -->
-			</div><!--/.header-area-->
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
+      id="navbar"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div class="flex-shrink-0" data-aos="fade-right">
+            <a
+              href="#"
+              class="text-2xl font-bold text-slate-900 dark:text-white tracking-wide hover-target"
+            >
+              Lakshmi<span class="text-primary">.</span>
+            </a>
+          </div>
 
-		    <div class="clearfix"></div>
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <div class="flex space-x-6">
+              <a
+                href="#home"
+                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                >About</a
+              >
+              <a
+                href="#services"
+                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                >Services</a
+              >
+              <a
+                href="#experience"
+                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                >Experience</a
+              >
+              <a
+                href="#contact"
+                class="hover-target text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition font-medium text-sm uppercase tracking-wider"
+                >Contact</a
+              >
+            </div>
 
-		</header><!-- /.top-area-->
-		<!-- top-area End -->
-	
-		<!--welcome-hero start -->
-		<section id="welcome-hero" class="welcome-hero">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="header-text">
-							<h2>hi <span>,</span> i am <br>Lakshmi <br> Ghosh <span>.</span>   </h2>
-							<p>HR Manager</p>
-							<a href="./assets/download/MyResume.pdf" download>Download Resume</a>
-						</div><!--/.header-text-->
-					</div><!--/.col-->
-				</div><!-- /.row-->
-			</div><!-- /.container-->
+            <!-- Dark Mode Toggle -->
+            <button
+              id="theme-toggle"
+              class="hover-target w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-yellow-400 hover:ring-2 ring-primary transition focus:outline-none"
+            >
+              <i class="fas fa-moon dark:hidden"></i>
+              <i class="fas fa-sun hidden dark:block"></i>
+            </button>
 
-		</section><!--/.welcome-hero-->
-		<!--welcome-hero end -->
+            <!-- CTA -->
+            <a
+              href="#contact"
+              class="hover-target px-5 py-2 rounded-full bg-primary hover:bg-indigo-700 text-white font-medium text-sm transition shadow-lg shadow-primary/30"
+            >
+              Hire Me
+            </a>
+          </div>
 
-		<!--about start -->
-		<section id="about" class="about">
-			<div class="section-heading text-center">
-				<h2>about me</h2>
-			</div>
-			<div class="container">
-				<div class="about-content">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="single-about-txt">
-								<h3>
-									I am a Professional HR Admin with expertise in managing and streamlining human resource operations.
-								</h3>
-								<p>
-									I specialize in employee engagement, recruitment, payroll management, and policy implementation, ensuring a smooth and productive work environment.With a strong understanding of organizational needs, I handle compliance, employee relations, and performance management while fostering a positive company culture. My goal is to create an efficient HR system that supports both employees and business objectives.
-								</p>
-								<div class="row">
-									<div class="col-sm-4">
-										<div class="single-about-add-info">
-											<h3>phone</h3>
-											<p>+91 7083499483</p>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="single-about-add-info">
-											<h3>email</h3>
-											<p>lakshmighosh043@gmail.com</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-offset-1 col-sm-5">
-							<div class="single-about-img">
-								<img src="./assets/images/about/mainImage.jpg" alt="profile_image">
-								<div class="about-list-icon">
-									<ul>
-										<li>
-											<a href="#">
-												<i  class="fa fa-facebook" aria-hidden="true"></i>
-											</a>
-										</li><!-- / li -->
-										<li>
-											<a href="#">
-												<i  class="fa fa-dribbble" aria-hidden="true"></i>
-											</a>
-											
-										</li><!-- / li -->
-										<li>
-											<a href="#">
-												<i  class="fa fa-twitter" aria-hidden="true"></i>
-											</a>
-											
-										</li><!-- / li -->
-										<li>
-											<a href="#">
-												<i  class="fa fa-linkedin" aria-hidden="true"></i>
-											</a>
-										</li><!-- / li -->
-										<li>
-											<a href="#">
-												<i  class="fa fa-instagram" aria-hidden="true"></i>
-											</a>
-										</li><!-- / li -->
-										
-										
-									</ul><!-- / ul -->
-								</div><!-- /.about-list-icon -->
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden flex items-center space-x-4">
+            <button
+              id="theme-toggle-mobile"
+              class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-yellow-400 focus:outline-none"
+            >
+              <i class="fas fa-moon dark:hidden"></i>
+              <i class="fas fa-sun hidden dark:block"></i>
+            </button>
 
-							</div>
+            <button
+              id="mobile-menu-btn"
+              class="text-slate-600 dark:text-slate-300 hover:text-primary focus:outline-none"
+            >
+              <i class="fa fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!--/.about-->
-		<!--about end -->
-		
-		<!--education start -->
-		<section id="education" class="education">
-			<div class="section-heading text-center">
-				<h2>education</h2>
-			</div>
-			<div class="container">
-				<div class="education-horizontal-timeline">
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>2021 - 2023</h2>
-									<h3>MBA</h3>
-									<h3>Marketing Management And Human Resource</h3>
-									<br>
-									<p>Percentage : 68%</p>
-								</div><!--/.experience-time-->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											SAVITRIBAI PHULE PUNE UNIVERSITY
-										</h4>
-										<h5>Someshwarnagar</h5>
-										<p class="description">
-											I am an MBA graduate specializing in Marketing and Human Resources, equipped with strategic business acumen and people management skills. My expertise lies in market research, brand management, digital marketing, and sales strategy, along with talent acquisition, employee engagement, and organizational development.
-										</p>
-									</div><!--/.timeline-content-->
-								</div><!--/.timeline-->
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>2017 - 2020</h2>
-									<h3>B.Com</h3>
-									<h3>Marketing And Management</h3>
-									<br>
-									<p>Percentage : 58%</p>
-								</div><!--/.experience-time-->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											SAVITRIBAI PHULE PUNE UNIVERSITY
-										</h4>
-										<h5>Baramati</h5>
-										<p class="description">
-											The B.Com in Marketing program provides a robust foundation in business and marketing principles. The curriculum is designed to develop a deep understanding of market dynamics, consumer behavior, brand management, and digital marketing strategies. Key features include: 
-										</p>
-									</div><!--/.timeline-content-->
-								</div><!--/.timeline-->
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>2015 - 2017</h2>
-									<h3>HSC</h3>
-									<br>
-									<p>Percentage : 70%</p>
-								</div><!--/.experience-time-->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal spacial-horizontal-line
-									"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											MAHARASHTRA BOARD
-										</h4>
-										<h5>Baramati</h5>
-										<p class="description">
-											I Have successfully completed her Higher Secondary Certificate (HSC), a significant academic milestone. This qualification marks the completion of 12th-grade education, equipping  with essential knowledge and skills for higher studies or career opportunities. 
-										</p>
-									</div><!--/.timeline-content-->
-								</div><!--/.timeline-->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+      <!-- Mobile Menu Panel -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white dark:bg-darkCard border-t dark:border-slate-700 shadow-lg"
+      >
+        <div
+          class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center"
+        >
+          <a
+            href="#home"
+            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            >Services</a
+          >
+          <a
+            href="#experience"
+            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            >Experience</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 text-base font-medium hover:text-primary dark:hover:text-primary"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
 
-		</section><!--/.education-->
-		<!--education end -->
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <!-- Animated Background Blobs -->
+      <div
+        class="absolute top-0 -left-4 w-96 h-96 bg-purple-300 dark:bg-purple-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob"
+      ></div>
+      <div
+        class="absolute top-0 -right-4 w-96 h-96 bg-yellow-300 dark:bg-yellow-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-2000"
+      ></div>
+      <div
+        class="absolute -bottom-8 left-20 w-96 h-96 bg-pink-300 dark:bg-pink-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 animate-blob animation-delay-4000"
+      ></div>
 
-		<!--skills start -->
-		<section id="skills" class="skills">
-				<div class="skill-content">
-					<div class="section-heading text-center">
-						<h2>skills</h2>
-					</div>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="single-skill-content">
-									<div class="barWrapper">
-										<span class="progressText">Master in Software Application</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-												<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-													  
-												</div>
-											</div>
-											<h3>90%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">MS-Office</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div>
-											</div>
-											<h3>90%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">Tally ERP.9</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <div class="progress-bar" role="progressbar" aria-valuenow="97" aria-valuemin="10" aria-valuemax="100" style="">
-												   
-											   </div>
-											</div>
-											<h3>97%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">GST</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div>
-											</div>
-											<h3>90%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="single-skill-content">
-									<div class="barWrapper">
-										<span class="progressText">DTP</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-												<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-													
-												</div>
-											</div>
-											<h3>90%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">Advance Excel</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div>
-											</div>
-											<h3>85%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">communication</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <div class="progress-bar" role="progressbar" aria-valuenow="97" aria-valuemin="10" aria-valuemax="100" style="">
-												   
-											   </div>
-											</div>
-											<h3>97%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">Digital Marketing</span>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div>
-											</div>
-											<h3>90%</h3>	
-										</div>
-									</div><!-- /.barWrapper -->
-								</div>
-							</div>
-						</div><!-- /.row -->
-					</div>	<!-- /.container -->		
-				</div><!-- /.skill-content-->
+      <div
+        class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10"
+      >
+        <h2
+          class="text-xl md:text-2xl font-medium text-slate-500 dark:text-slate-400 mb-4"
+          data-aos="fade-down"
+          data-aos-delay="100"
+        >
+          Hello, I am
+        </h2>
 
-		</section><!--/.skills-->
-		<!--skills end -->
+        <h1
+          class="text-5xl md:text-8xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          Lakshmi
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+            >Ghosh</span
+          >
+        </h1>
 
-		<!--experience start -->
-		<section id="experience" class="experience">
-			<div class="section-heading text-center">
-				<h2>experience</h2>
-			</div>
-			<div class="container">
-				<div class="experience-content">
-						<div class="main-timeline">
-							<ul>
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="experience-time text-right">
-													<h2>02/2025 - Present</h2>
-													<h3>HR Admin</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5">
-												<div class="timeline">
-													<div class="timeline-content">
-														<h4 class="title">
-															<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-															Curiosity Automation OPC Private Limited – Currently Working 
-														</h4>
-														<h5>Pencil Chowk MIDC, Baramati</h5>
-														<p class="description">
-															I am is currently working as an HR Admin at Curiosity Automation OPC Private Limited. In this role, I manages various HR functions, including recruitment, employee records, payroll processing, and compliance with company policies.
-														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
+        <!-- Typewriter Effect -->
+        <div class="h-10 mb-12" data-aos="fade-up" data-aos-delay="300">
+          <span
+            class="text-2xl md:text-4xl text-slate-600 dark:text-slate-300 font-light typing-cursor"
+            id="typewriter-text"
+          ></span>
+        </div>
 
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-offset-1 col-md-5 experience-time-responsive">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														2023 - 2024
-													</h2>
-													<h3>HR Admin</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-5">
-												<div class="timeline">
-													<div class="timeline-content text-right">
-														<h4 class="title">
-															GSINFOTECHVIS Private Limited 
-														</h4>
-														<h5>Baramati , Pune</h5>
-														<p class="description">
-															I previously worked as an HR Admin at GSINFOTECHVIS Private Limited. In this role, I handled key HR responsibilities such as recruitment, employee management, payroll processing, and compliance with company policies. She played a crucial role in maintaining smooth HR operations, fostering a positive work environment, and ensuring efficient administrative processes.
-														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5 experience-time-main">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														11/2023 - 11/2024
-													</h2>
-													<h3>HR Admin</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
+        <div
+          class="flex flex-col sm:flex-row justify-center gap-4"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
+          <a
+            href="./assets/download/MyResume.pdf"
+            download
+            class="hover-target relative overflow-hidden group inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-full shadow-lg text-white bg-slate-900 dark:bg-white dark:text-slate-900 hover:scale-105 transition duration-300"
+          >
+            <span
+              class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shine"
+            ></span>
+            Download Resume
+            <i class="fa fa-download ml-2 group-hover:animate-bounce"></i>
+          </a>
+          <a
+            href="#contact"
+            class="hover-target inline-flex items-center px-8 py-4 border-2 border-slate-900 dark:border-white text-lg font-medium rounded-full text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition duration-300"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
 
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="experience-time text-right">
-													<h2>03/2023 - 08/2023</h2>
-													<h3>HR Admin & Digital Marketing</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5">
-												<div class="timeline">
-													<div class="timeline-content">
-														<h4 class="title">
-															<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-															KAD Deshmukh Business Group  
-														</h4>
-														<h5>Baramati , Pune</h5>
-														<p class="description">
-															I have worked as an HR Admin & Digital Marketing professional at KAD Deshmukh Business Group. My role involved managing HR functions like recruitment, employee relations, payroll, and policy implementation. Alongside this, I handled digital marketing activities, including social media management, content creation, branding, and online promotions. This experience allowed me to develop skills in both HR operations and digital marketing, contributing to the company’s growth and employee engagement. 
-														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
+    <!-- About Section -->
+    <section
+      id="about"
+      class="py-24 bg-white dark:bg-dark transition-colors duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
+          >
+            About Me
+          </h2>
+        </div>
 
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-offset-1 col-md-5 experience-time-responsive">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														03/2023 - 08/2023
-													</h2>
-													<h3>HR Admin & Digital Marketing</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-5">
-												<div class="timeline">
-													<div class="timeline-content text-right">
-														<h4 class="title">
-															Ocean One Private Limited 
-														</h4>
-														<h5>Baramati , Pune</h5>
-														<p class="description">
-															I have completed a Junior HR Admin Internship at Ocean One Private Limited, where I gained hands-on experience in HR operations. My responsibilities included assisting with recruitment, employee onboarding, maintaining HR records, and supporting payroll processing. This internship helped me develop a strong foundation in human resource management and administrative tasks, enhancing my skills in workplace coordination and compliance. 
-														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5 experience-time-main">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														09/2022 - 12/2022
-													</h2>
-													<h3>Junior HR Admin Internship</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Text Content -->
+          <div
+            class="order-2 md:order-1"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <h3
+              class="text-2xl font-bold text-slate-800 dark:text-white mb-4 leading-relaxed"
+            >
+              Professional HR Admin with expertise in streamlining operations.
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              I specialize in employee engagement, recruitment, payroll
+              management, and policy implementation. With a strong understanding
+              of organizational needs, I handle compliance, employee relations,
+              and performance management while fostering a positive company
+              culture. My goal is to create an efficient HR system that supports
+              both employees and business objectives.
+            </p>
 
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="experience-time text-right">
-													<h2>12/2021 - 08/2022</h2>
-													<h3>Digital Marketing (Internship)</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5">
-												<div class="timeline">
-													<div class="timeline-content">
-														<h4 class="title">
-															<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-															Talentkatta.com
-														</h4>
-														<h5>Remote Working</h5>
-														<p class="description">
-															I have completed a Digital Marketing Internship at Talentkatta.com, where I gained practical experience in online marketing strategies. 
-														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+              <div
+                class="flex items-start p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
+              >
+                <div class="flex-shrink-0">
+                  <i class="fa fa-phone text-primary text-xl mt-1"></i>
+                </div>
+                <div class="ml-4">
+                  <h4
+                    class="text-lg font-semibold text-slate-900 dark:text-white"
+                  >
+                    Phone
+                  </h4>
+                  <p class="text-slate-600 dark:text-slate-400">
+                    +91 7083499483
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-start p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition duration-300"
+              >
+                <div class="flex-shrink-0">
+                  <i class="fa fa-envelope text-secondary text-xl mt-1"></i>
+                </div>
+                <div class="ml-4">
+                  <h4
+                    class="text-lg font-semibold text-slate-900 dark:text-white"
+                  >
+                    Email
+                  </h4>
+                  <p
+                    class="text-slate-600 dark:text-slate-400 text-sm break-all"
+                  >
+                    lakshmighosh043@gmail.com
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-							</ul>
-						</div><!--.main-timeline-->
-					</div><!--.experience-content-->
-			</div>
+          <!-- Image with 3D Tilt Wrapper -->
+          <div
+            class="order-1 md:order-2 flex justify-center"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
+            <div
+              class="relative group"
+              data-tilt
+              data-tilt-max="5"
+              data-tilt-speed="400"
+              data-tilt-glare
+              data-tilt-max-glare="0.2"
+            >
+              <div
+                class="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-2xl opacity-70 blur-lg group-hover:opacity-100 transition duration-500"
+              ></div>
+              <!-- REPLACE WITH YOUR IMAGE -->
+              <img
+                src="./assets/images/about/mainImage.jpg"
+                alt="Lakshmi Ghosh"
+                class="relative rounded-xl shadow-2xl w-full max-w-sm object-cover h-[450px]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		</section><!--/.experience-->
-		<!--experience end -->
+    <!-- NEW SECTION: Services / What I Do (Glassmorphism + Tilt) -->
+    <section
+      id="services"
+      class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-secondary pb-2"
+          >
+            What I Do
+          </h2>
+        </div>
 
-		
-		<!-- <section id="profiles" class="profiles">
-			<div class="profiles-details">
-				<div class="section-heading text-center">
-					<h2>profiles</h2>
-				</div>
-				<div class="container">
-					<div class="profiles-content">
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-themeforest"></i></a>
-										<div class="profile-icon-name">themeforest</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-themeforest"></i></a>
-											<div class="profile-icon-name">themeforest</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-dribbble"></i></a>
-										<div class="profile-icon-name">dribbble</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-dribbble"></i></a>
-											<div class="profile-icon-name">dribbble</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-behance-logo"></i></a>
-										<div class="profile-icon-name">behance</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-behance-logo"></i></a>
-											<div class="profile-icon-name">behance</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile profile-no-border">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-github-logo"></i></a>
-										<div class="profile-icon-name">github</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-github-logo"></i></a>
-											<div class="profile-icon-name">github</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="profile-border"></div>
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-flickr-website-logo-silhouette"></i></a>
-										<div class="profile-icon-name">flickR</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-flickr-website-logo-silhouette"></i></a>
-											<div class="profile-icon-name">flickR</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-smug"></i></a>
-										<div class="profile-icon-name">smungMung</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-smug"></i></a>
-											<div class="profile-icon-name">smungMung</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-squarespace-logo"></i></a>
-										<div class="profile-icon-name">squareSpace</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-squarespace-logo"></i></a>
-											<div class="profile-icon-name">squareSpace</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile profile-no-border">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-bitbucket-logotype-camera-lens-in-perspective"></i></a>
-										<div class="profile-icon-name">bitBucket</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-bitbucket-logotype-camera-lens-in-perspective"></i></a>
-											<div class="profile-icon-name">bitBucket</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-primary transform transition-all"
+            data-tilt
+            data-tilt-max="10"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          >
+            <div
+              class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl mb-6"
+            >
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+              Recruitment
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              End-to-end talent acquisition, screening, interviewing, and
+              onboarding new talent efficiently.
+            </p>
+          </div>
 
-		</section> -->
-		
+          <!-- Card 2 -->
+          <div
+            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-secondary transform transition-all"
+            data-tilt
+            data-tilt-max="10"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary text-2xl mb-6"
+            >
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+              Payroll & GST
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              Managing payroll processing, Tally ERP.9, and ensuring tax
+              compliance and accurate records.
+            </p>
+          </div>
 
+          <!-- Card 3 -->
+          <div
+            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-blue-500 transform transition-all"
+            data-tilt
+            data-tilt-max="10"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 text-2xl mb-6"
+            >
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+              Digital Marketing
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              Social media management, branding, and content strategies to boost
+              online presence.
+            </p>
+          </div>
 
-		</section><!--/.clients-->
-		<!--clients end -->
+          <!-- Card 4 -->
+          <div
+            class="hover-target p-8 rounded-2xl bg-white dark:bg-darkCard shadow-lg border-b-4 border-green-500 transform transition-all"
+            data-tilt
+            data-tilt-max="10"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-500 text-2xl mb-6"
+            >
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+              Administration
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              Streamlining office operations, maintaining employee records, and
+              policy implementation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!--contact start -->
-		<section id="contact" class="contact">
-			<div class="section-heading text-center">
-				<h2>contact me</h2>
-			</div>
-			<div class="container">
-				<div class="contact-content">
-					<div class="row">
-						<div class="col-md-offset-1 col-md-5 col-sm-6">
-							<div class="single-contact-box">
-								<div class="contact-form">
-									<form>
-										<div class="row">
-											<div class="col-sm-6 col-xs-12">
-												<div class="form-group">
-												  <input type="text" class="form-control" id="name" placeholder="Name*" name="name">
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-											<div class="col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="email" class="form-control" id="email" placeholder="Email*" name="email">
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="form-group">
-													<input type="text" class="form-control" id="subject" placeholder="Subject" name="subject">
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="form-group">
-													<textarea class="form-control" rows="8" id="comment" placeholder="Message" ></textarea>
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="single-contact-btn">
-													<a class="contact-btn" href="#" role="button">submit</a>
-												</div><!--/.single-single-contact-btn-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-									</form><!--/form-->
-								</div><!--/.contact-form-->
-							</div><!--/.single-contact-box-->
-						</div><!--/.col-->
-						<div class="col-md-offset-1 col-md-5 col-sm-6">
-							<div class="single-contact-box">
-								<div class="contact-adress">
-									<div class="contact-add-head">
-										<h3>Lakshmi Ghosh</h3>
-										<p>HR ADMIN</p>
-									</div>
-									<div class="contact-add-info">
-										<div class="single-contact-add-info">
-											<h3>phone</h3>
-											<p>+91 7083499483</p>
-										</div>
-										<div class="single-contact-add-info">
-											<h3>email</h3>
-											<p>lakshmighosh043@gmail.com</p>
-										</div>
-									</div>
-								</div><!--/.contact-adress-->
-								<div class="hm-foot-icon">
-									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-dribbble"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-instagram"></i></a></li><!--/li-->
-									</ul><!--/ul-->
-								</div><!--/.hm-foot-icon-->
-							</div><!--/.single-contact-box-->
-						</div><!--/.col-->
-					</div><!--/.row-->
-				</div><!--/.contact-content-->
-			</div><!--/.container-->
+    <!-- NEW SECTION: Counter Statistics -->
+    <section
+      class="py-16 bg-primary dark:bg-slate-800 text-white relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div data-aos="zoom-in">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+              <span class="counter" data-target="3">0</span>+
+            </h2>
+            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+              Years Experience
+            </p>
+          </div>
 
-		</section><!--/.contact-->
-		<!--contact end -->
+          <div data-aos="zoom-in" data-aos-delay="100">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+              <span class="counter" data-target="15">0</span>+
+            </h2>
+            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+              Projects Done
+            </p>
+          </div>
 
-		<!--footer-copyright start-->
-		<footer id="footer-copyright" class="footer-copyright">
-			<div class="container">
-				<div class="hm-footer-copyright text-center">
-					<p>
-						&copy; copyright Lakshmi Ghosh. 
-					</p><!--/p-->
-				</div><!--/.text-center-->
-			</div><!--/.container-->
+          <div data-aos="zoom-in" data-aos-delay="200">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+              <span class="counter" data-target="4">0</span>
+            </h2>
+            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+              Companies Served
+            </p>
+          </div>
 
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" ></i>
-				</div>
-				
-			</div><!--/.scroll-Top-->
-			
-        </footer><!--/.footer-copyright-->
-		<!--footer-copyright end-->
-		
-		
-		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+          <div data-aos="zoom-in" data-aos-delay="300">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-2">
+              <span class="counter" data-target="100">0</span>%
+            </h2>
+            <p class="text-sm md:text-base opacity-80 uppercase tracking-wide">
+              Satisfaction
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<script src="assets/js/jquery.js"></script>
-        
-        <!--modernizr.min.js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-		
-		<!--bootstrap.min.js-->
-        <script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- bootsnav js -->
-		<script src="assets/js/bootsnav.js"></script>
-		
-		<!-- jquery.sticky.js -->
-		<script src="assets/js/jquery.sticky.js"></script>
-		
-		<!-- for progress bar start-->
+    <!-- Experience Section -->
+    <section
+      id="experience"
+      class="py-24 bg-white dark:bg-dark transition-colors duration-300"
+    >
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
+          >
+            Experience
+          </h2>
+        </div>
 
-		<!-- progressbar js -->
-		<script src="assets/js/progressbar.js"></script>
+        <div
+          class="relative border-l-2 border-primary/30 dark:border-slate-700 ml-3 md:ml-6 space-y-12"
+        >
+          <!-- Timeline Item 1 -->
+          <div class="relative pl-8 md:pl-12 group" data-aos="fade-left">
+            <span
+              class="absolute -left-[9px] top-0 h-5 w-5 rounded-full bg-white dark:bg-dark border-4 border-primary group-hover:scale-125 transition duration-300 shadow-md"
+            ></span>
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2"
+            >
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                HR Admin
+              </h3>
+              <span
+                class="text-sm font-semibold text-primary bg-primary/10 dark:bg-primary/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
+                >02/2025 - Present</span
+              >
+            </div>
+            <h4
+              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
+            >
+              Curiosity Automation OPC Private Limited
+            </h4>
+            <p class="text-sm text-slate-500 mb-3 italic">
+              <i class="fas fa-map-marker-alt mr-1"></i> Pencil Chowk MIDC,
+              Baramati
+            </p>
+            <p
+              class="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
+            >
+              Currently managing various HR functions including recruitment,
+              employee records, payroll processing, and compliance with company
+              policies.
+            </p>
+          </div>
 
-		<!-- appear js -->
-		<script src="assets/js/jquery.appear.js"></script>
+          <!-- Timeline Item 2 -->
+          <div
+            class="relative pl-8 md:pl-12 group"
+            data-aos="fade-left"
+            data-aos-delay="100"
+          >
+            <span
+              class="absolute -left-[9px] top-0 h-5 w-5 rounded-full bg-white dark:bg-dark border-4 border-secondary group-hover:scale-125 transition duration-300 shadow-md"
+            ></span>
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2"
+            >
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                HR Admin
+              </h3>
+              <span
+                class="text-sm font-semibold text-secondary bg-secondary/10 dark:bg-secondary/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
+                >11/2023 - 11/2024</span
+              >
+            </div>
+            <h4
+              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
+            >
+              GSINFOTECHVIS Private Limited
+            </h4>
+            <p
+              class="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
+            >
+              Handled key HR responsibilities such as recruitment, employee
+              management, payroll processing, and compliance.
+            </p>
+          </div>
 
-		<!-- for progress bar end -->
+          <!-- Timeline Item 3 -->
+          <div
+            class="relative pl-8 md:pl-12 group"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
+            <span
+              class="absolute -left-[9px] top-0 h-5 w-5 rounded-full bg-white dark:bg-dark border-4 border-blue-500 group-hover:scale-125 transition duration-300 shadow-md"
+            ></span>
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2"
+            >
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                HR & Digital Marketing
+              </h3>
+              <span
+                class="text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit"
+                >03/2023 - 08/2023</span
+              >
+            </div>
+            <h4
+              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-1"
+            >
+              KAD Deshmukh Business Group
+            </h4>
+            <p
+              class="text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-50 dark:bg-darkCard p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition"
+            >
+              Managed HR functions like recruitment and payroll. Also handled
+              digital marketing activities including social media management and
+              branding.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!--owl.carousel.js-->
-        <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2
+            class="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest inline-block border-b-4 border-primary pb-2"
+          >
+            Contact Me
+          </h2>
+        </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Form -->
+          <div
+            class="hover-target bg-white dark:bg-darkCard p-8 rounded-2xl shadow-lg border-t-4 border-primary"
+            data-aos="fade-right"
+          >
+            <form>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition"
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition"
+                />
+              </div>
+              <div class="mb-6">
+                <label
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  >Message</label
+                >
+                <textarea
+                  rows="5"
+                  class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="hover-target w-full bg-primary hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition duration-300 shadow-md transform hover:-translate-y-1"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-		
-        
-        <!--Custom JS-->
-        <script src="assets/js/custom.js"></script>
+          <!-- Contact Info -->
+          <div class="flex flex-col justify-center" data-aos="fade-left">
+            <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+              Lakshmi Ghosh
+            </h3>
+            <p
+              class="text-primary font-semibold text-lg mb-8 uppercase tracking-wide"
+            >
+              HR ADMIN
+            </p>
 
-		<script src="script.js"></script>
-        
-    </body>
+            <div class="space-y-6">
+              <div
+                class="flex items-center p-4 bg-white dark:bg-darkCard rounded-lg border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:scale-105 transition duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary text-xl"
+                >
+                  <i class="fa fa-phone"></i>
+                </div>
+                <div class="ml-4">
+                  <p
+                    class="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase"
+                  >
+                    Phone
+                  </p>
+                  <p
+                    class="text-lg text-slate-800 dark:text-white font-semibold"
+                  >
+                    +91 7083499483
+                  </p>
+                </div>
+              </div>
 
+              <div
+                class="flex items-center p-4 bg-white dark:bg-darkCard rounded-lg border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:scale-105 transition duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-secondary/10 dark:bg-secondary/20 flex items-center justify-center text-secondary text-xl"
+                >
+                  <i class="fa fa-envelope"></i>
+                </div>
+                <div class="ml-4">
+                  <p
+                    class="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase"
+                  >
+                    Email
+                  </p>
+                  <p
+                    class="text-lg text-slate-800 dark:text-white font-semibold break-all"
+                  >
+                    lakshmighosh043@gmail.com
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Socials -->
+            <div class="mt-10 flex space-x-4">
+              <a
+                href="#"
+                class="hover-target w-12 h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition shadow-md"
+                ><i class="fab fa-linkedin-in text-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="hover-target w-12 h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition shadow-md"
+                ><i class="fab fa-instagram text-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="hover-target w-12 h-12 rounded-full bg-white dark:bg-darkCard flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-400 hover:text-white transition shadow-md"
+                ><i class="fab fa-twitter text-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-dark text-slate-300 py-8 border-t border-slate-800 relative z-10"
+    >
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <p>&copy; 2025 Lakshmi Ghosh. All rights reserved.</p>
+      </div>
+      <a
+        href="#home"
+        id="scroll-top"
+        class="hover-target fixed bottom-8 right-8 bg-primary hover:bg-indigo-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition duration-300 transform translate-y-20 opacity-0 cursor-pointer z-40"
+      >
+        <i class="fa fa-angle-up text-xl"></i>
+      </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script>
+      // --- 1. Initialize AOS ---
+      AOS.init({
+        duration: 800,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 50,
+      });
+
+      // --- 2. Custom Cursor Logic ---
+      const cursorDot = document.querySelector("[data-cursor-dot]");
+      const cursorOutline = document.querySelector("[data-cursor-outline]");
+      const hoverTargets = document.querySelectorAll(
+        ".hover-target, a, button, input, textarea"
+      );
+
+      window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Adding a tiny delay to the outline for smooth trailing effect
+        cursorOutline.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          { duration: 500, fill: "forwards" }
+        );
+      });
+
+      hoverTargets.forEach((el) => {
+        el.addEventListener("mouseenter", () =>
+          document.body.classList.add("hovering")
+        );
+        el.addEventListener("mouseleave", () =>
+          document.body.classList.remove("hovering")
+        );
+      });
+
+      // --- 3. Scroll Progress Bar ---
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scroll-progress").style.width = scrolled + "%";
+
+        // Back to top button visibility
+        const btn = document.getElementById("scroll-top");
+        if (winScroll > 300)
+          btn.classList.remove("translate-y-20", "opacity-0");
+        else btn.classList.add("translate-y-20", "opacity-0");
+      });
+
+      // --- 4. Dark Mode ---
+      const toggleBtns = [
+        document.getElementById("theme-toggle"),
+        document.getElementById("theme-toggle-mobile"),
+      ];
+      const html = document.documentElement;
+
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        html.classList.add("dark");
+      } else {
+        html.classList.remove("dark");
+      }
+
+      toggleBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          html.classList.toggle("dark");
+          localStorage.theme = html.classList.contains("dark")
+            ? "dark"
+            : "light";
+        });
+      });
+
+      // --- 5. Mobile Menu ---
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      menuBtn.addEventListener("click", () => menu.classList.toggle("hidden"));
+      document
+        .querySelectorAll("#mobile-menu a")
+        .forEach((link) =>
+          link.addEventListener("click", () => menu.classList.add("hidden"))
+        );
+
+      // --- 6. Typewriter Effect ---
+      const textElement = document.getElementById("typewriter-text");
+      const words = [
+        "HR Manager",
+        "Administrator",
+        "Talent Acquisition",
+        "Digital Marketer",
+      ];
+      let wordIndex = 0,
+        charIndex = 0,
+        isDeleting = false;
+
+      function type() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+          textElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          textElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+        if (!isDeleting && charIndex === currentWord.length) {
+          isDeleting = true;
+          typeSpeed = 2000;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          typeSpeed = 500;
+        }
+        setTimeout(type, typeSpeed);
+      }
+      type();
+
+      // --- 7. Number Counter Animation ---
+      const counters = document.querySelectorAll(".counter");
+      let hasCounted = false;
+
+      const countObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !hasCounted) {
+            hasCounted = true;
+            counters.forEach((counter) => {
+              const target = +counter.getAttribute("data-target");
+              const increment = target / 50;
+              let c = 0;
+              const updateCounter = () => {
+                c += increment;
+                if (c < target) {
+                  counter.innerText = Math.ceil(c);
+                  setTimeout(updateCounter, 30);
+                } else {
+                  counter.innerText = target;
+                }
+              };
+              updateCounter();
+            });
+          }
+        },
+        { threshold: 0.5 }
+      );
+
+      if (counters.length > 0)
+        countObserver.observe(
+          document.querySelector(".counter").parentElement.parentElement
+            .parentElement
+        );
+    </script>
+  </body>
 </html>
